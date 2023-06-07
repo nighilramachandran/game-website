@@ -1,5 +1,5 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../assets/images/5.webp";
+import logo from "../assets/images/logo.webp";
 
 const NavBar = () => {
   return (
