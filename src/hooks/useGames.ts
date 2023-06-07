@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import gameServices, { Games } from "../services/game-services";
-import { AxiosError } from "axios";
+import { AxiosError, CanceledError } from "axios";
 
 const useGames = () => {
   const [games, setGames] = useState<Games[]>([]);
@@ -11,6 +11,7 @@ const useGames = () => {
       try {
         await gameServices.getAllGames().result.then((res) => setGames(res.data.results));
       } catch (err) {
+        if (err instanceof CanceledError) return;
         setError((err as AxiosError).message);
       }
     };
