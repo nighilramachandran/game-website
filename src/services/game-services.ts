@@ -1,6 +1,6 @@
 import apiClients from "./api-clients";
 
-interface Games {
+export interface Games {
   id: number;
   name: string;
 }
@@ -13,7 +13,7 @@ export interface FecthGameProps {
 class GameServices {
   getAllGames() {
     const controller = new AbortController();
-    const result = apiClients.get<FecthGameProps[]>("/games", { signal: controller.signal });
+    const result = apiClients.get<FecthGameProps>("/games", { signal: controller.signal });
     return result;
   }
 }
