@@ -14,7 +14,7 @@ class GameServices {
   getAllGames() {
     const controller = new AbortController();
     const result = apiClients.get<FecthGameProps>("/games", { signal: controller.signal });
-    return result;
+    return { result, abort: () => controller.abort() };
   }
 }
 
